@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--配置内容-->
+<configuration>
+
+    <!--mybatis环境配置-->
+    <environments default="mysql">
+        <!--mysql配置环境
+            id:标识符
+        -->
+        <environment id="mysql">
+            <!--事务配置
+                type:默认的JDBC
+            -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--
+                配置数据源  mybatis:自带连接池
+                连接池
+            -->
+            <dataSource type="POOLED">
+
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/racemall"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--
+        mybatis:dao代理
+        每一个持久层接口-           对应接口的映射配置文件
+    -->
+    <!--接口的映射配置文件-->
+    <mappers>
+
+        <!--
+
+              快速注解的方式的入门.核心配置文件中,加载的是接口
+
+              class属性:接口的全限定名称
+          -->
+        <mapper class="com.qf.mytatis.dao.UserDao"></mapper>
+        <!--注册Mapper文件-->
+        <!--方式一：读取mapper配置文件 sql语句都在mapper中存着-->
+<!--       <mapper resource="Mapper.xml"/>-->
+
+
+    </mappers>
+</configuration>

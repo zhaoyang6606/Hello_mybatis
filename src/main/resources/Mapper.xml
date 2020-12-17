@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace = 所需实现接口的全限定名-->
+<mapper namespace="com.qf.mytatis.dao.UserDao">
+    <!--id = 定义的抽象方法接口 resultType= 查询后所需要返回对象类型-->
+
+    <!--
+
+        执行查询标签
+        id:标识符 每一个标签id是唯一的,代表当前执行当前dao接口中的哪个方法
+
+        resultType:输出映射
+         对应的输出参数   list集合:list集合中  存储数据类型的全限定名称
+    -->
+    <select id="findAllUser"  resultType="com.qf.mytatis.entirty.User">
+
+        select  * from  t_users
+
+    </select>
+
+
+
+    <!--
+        添加用户
+
+        parameterType :输入映射
+        参数:实体User   当前类型的权限定名称
+
+    -->
+    <insert id="addUser" parameterType="com.qf.mytatis.entirty.User">
+
+        <!-- 添加参数:
+
+            占位符 #{ognl表达式}     #{类型.属性}
+               parameterType:指定User类型:    #{属性名称}
+             -->
+         insert  into t_users(name,password,sex) values (#{name},#{password},#{sex})
+
+    </insert>
+
+    <!--更新用户的操作-->
+    <update id="updateUser" parameterType="com.qf.mytatis.entirty.User">
+    update t_users set name = #{name},password = #{password},sex = #{sex} where id = #{id}
+    </update>
+
+</mapper>
