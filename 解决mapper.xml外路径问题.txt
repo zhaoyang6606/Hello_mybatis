@@ -1,0 +1,3 @@
+解决mapper.xml存放在resources以外路径读取问题
+
+在pom.xml文件最后追加<build>标签 以便可以将文件复制到classes中，并在程序中正确读取。
